@@ -21,6 +21,8 @@ SnapRun은 EC2와 같은 가상 서버(Bare Metal) 위에서 동작하는 자체
 
 
 ### Directory Structure
+
+```plaintext
 snaprun/
 ├── 📂 controller/              # [EC2-A] 두뇌 역할 (관제탑)
 │   ├── controller.js           # 메인 로드밸런싱 서버 코드
@@ -40,6 +42,8 @@ snaprun/
 │
 ├── .gitignore                  # node_modules, .env, .terraform 제외
 └── README.md                   # 프로젝트 소개 및 실행 가이드
+```
+
 
 ## 🏗 Architecture
 
