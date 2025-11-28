@@ -28,14 +28,14 @@ snaprun/
 │   ├── controller.js           # 메인 로드밸런싱 서버 코드
 │   ├── config.js               # Worker들의 IP 주소 목록 관리
 │   ├── package.json            # dependencies: axios, express
-│   └── .env                    # (선택) 환경변수 (포트 번호 등)
+│   └── .env                    # 환경변수 (포트 번호 등)
 │
 ├── 📂 worker/                  # [EC2-B, C...] 실행 역할 (일꾼)
-│   ├── worker_agent.js         # Docker 제어 에이전트 (작성해드린 코드)
+│   ├── worker_agent.js         # Docker 제어 에이전트
 │   ├── package.json            # dependencies: express, uuid
-│   └── 📂 temp_scripts/        # (자동생성) 실행할 사용자 코드가 잠시 저장되는 곳
+│   └── 📂 temp_scripts/        # 실행할 사용자 코드가 잠시 저장되는 곳
 │
-├── 📂 infra/                   # [Terraform] 인프라 자동화 코드 (가산점용)
+├── 📂 infra/                   # [Terraform] 인프라 자동화 코드
 │   ├── main.tf                 # EC2, Security Group 정의
 │   ├── outputs.tf              # 생성된 EC2 IP 출력 설정
 │   └── variables.tf            # 설정값 (AWS Region, KeyPair 이름 등)
