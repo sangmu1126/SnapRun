@@ -19,6 +19,28 @@ SnapRun은 EC2와 같은 가상 서버(Bare Metal) 위에서 동작하는 자체
 * **Time Limit**: 3초 이상 실행되는 코드는 좀비 프로세스 방지를 위해 강제 종료(Kill)됩니다.
 * **Instant Execution**: 미리 준비된(Warm) Worker Node들이 요청 즉시 코드를 실행하여 Cold Start를 최소화합니다.
 
+
+### Directory Structure
+snaprun/
+├── 📂 controller/              # [EC2-A] 두뇌 역할 (관제탑)
+│   ├── controller.js           # 메인 로드밸런싱 서버 코드
+│   ├── config.js               # Worker들의 IP 주소 목록 관리
+│   ├── package.json            # dependencies: axios, express
+│   └── .env                    # (선택) 환경변수 (포트 번호 등)
+│
+├── 📂 worker/                  # [EC2-B, C...] 실행 역할 (일꾼)
+│   ├── worker_agent.js         # Docker 제어 에이전트 (작성해드린 코드)
+│   ├── package.json            # dependencies: express, uuid
+│   └── 📂 temp_scripts/        # (자동생성) 실행할 사용자 코드가 잠시 저장되는 곳
+│
+├── 📂 infra/                   # [Terraform] 인프라 자동화 코드 (가산점용)
+│   ├── main.tf                 # EC2, Security Group 정의
+│   ├── outputs.tf              # 생성된 EC2 IP 출력 설정
+│   └── variables.tf            # 설정값 (AWS Region, KeyPair 이름 등)
+│
+├── .gitignore                  # node_modules, .env, .terraform 제외
+└── README.md                   # 프로젝트 소개 및 실행 가이드
+
 ## 🏗 Architecture
 
 ```mermaid
