@@ -31,7 +31,7 @@ snaprun/
 │   └── .env                    # 환경변수 (포트 번호 등)
 │
 ├── 📂 worker/                  # [EC2-B, C...] 실행 역할 (일꾼)
-│   ├── worker_agent.js         # Docker 제어 에이전트
+│   ├── agent.js                # Docker 제어 에이전트
 │   ├── package.json            # dependencies: express, uuid
 │   └── 📂 temp_scripts/        # 실행할 사용자 코드가 잠시 저장되는 곳
 │
